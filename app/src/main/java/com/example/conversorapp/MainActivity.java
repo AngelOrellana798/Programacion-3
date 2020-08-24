@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
                 procesar(view);
             }
         });
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
     public void procesar(View vista){
         try {
@@ -32,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
             double num1 = Double.parseDouble(tempVal.getText().toString());
 
             double respuesta = 0;
-
             //Este es para el radiogroup y los radiobuttons
             switch (optOperaciones.getCheckedRadioButtonId()) {
                 case R.id.optEuro:

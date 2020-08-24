@@ -9,13 +9,12 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MasaActivity extends AppCompatActivity {
-
+public class TransmisionActivity extends AppCompatActivity {
     public Button btnCalcular;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_masa2);
+        setContentView(R.layout.activity_transmision);
         btnCalcular = (Button)findViewById(R.id.btnConvertir);
         btnCalcular.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,7 +28,7 @@ public class MasaActivity extends AppCompatActivity {
 
     private void procesar(View view) {
         try {
-            RadioGroup optOperaciones = (RadioGroup) findViewById(R.id.optMasa);
+            RadioGroup optOperaciones = (RadioGroup) findViewById(R.id.optTransmision);
 
             TextView tempVal = (TextView) findViewById(R.id.txtnum1);
             double num1 = Double.parseDouble(tempVal.getText().toString());
@@ -37,38 +36,38 @@ public class MasaActivity extends AppCompatActivity {
             double respuesta = 0;
             //Este es para el radiogroup y los radiobuttons
             switch (optOperaciones.getCheckedRadioButtonId()) {
-                case R.id.optGramo:
-                    respuesta = num1 * 453.59;
+                case R.id.optBitS:
+                    respuesta = num1 * 8000000;
                     tempVal = (TextView) findViewById(R.id.lblRespuesta);
-                    tempVal.setText("La Conversion son " + respuesta + " Gramos" );
+                    tempVal.setText("La Conversion son " + respuesta + " Bits por segundo" );
                     break;
-                case R.id.optKilogramo:
-                    respuesta = num1 * 0.45;
+                case R.id.optKilobitS:
+                    respuesta = num1 * 8000;
                     tempVal = (TextView) findViewById(R.id.lblRespuesta);
-                    tempVal.setText("La Conversion son " + respuesta + " Kilogramos" );
+                    tempVal.setText("La Conversion son " + respuesta + " Kilobits por segundo" );
                     break;
-                case R.id.optQuintal:
-                    respuesta = num1 * 0.01;
+                case R.id.optKilobyteS:
+                    respuesta = num1 * 1000;
                     tempVal = (TextView) findViewById(R.id.lblRespuesta);
-                    tempVal.setText("La Conversion son " + respuesta + " Quintal" );
+                    tempVal.setText("La Conversion son " + respuesta + " Kilobytes por segundo" );
                     break;
-                case R.id.optOnza:
-                    respuesta = num1 * 16;
+                case R.id.optGigabyteS:
+                    respuesta = num1 / 1000;
                     tempVal = (TextView) findViewById(R.id.lblRespuesta);
-                    tempVal.setText("La Conversion son " + respuesta + " Onzas" );
+                    tempVal.setText("La Conversion son " + respuesta + "  Gigabytes por segundo" );
 
                     break;
-                case R.id.optTonelada:
-                    respuesta = num1 * 0.000453;
+                case R.id.optTerabyteS:
+                    respuesta = num1 / 1000000;
                     tempVal = (TextView) findViewById(R.id.lblRespuesta);
-                    tempVal.setText("La Conversion son " + respuesta + " Toneladas" );
+                    tempVal.setText("La Conversion son " + respuesta + " Terabytes por segundo" );
                     break;
             }
 
             Toast.makeText(getApplicationContext(),"Conversion realizada ",Toast.LENGTH_LONG).show();
         }catch (Exception err){
             TextView temp = (TextView) findViewById(R.id.lblRespuesta);
-            temp.setText("Por favor ingrese la cantidad en libras");
+            temp.setText("Por favor ingrese la cantidad en MB/S");
 
             Toast.makeText(getApplicationContext(),"Por favor ingrese la cantidad",Toast.LENGTH_LONG).show();
         }
